@@ -21,9 +21,9 @@ let elInput = document.querySelector(".site-input");
 let createMovieElement = (movie) => {
 	let elNewElement = elMovieTemplate.cloneNode(true);
 
-	// elNewElement.querySelector(
-	// 	".card-img",
-	// ).src = `https://i3.ytimg.com/vi/${movie.ytid}/maxresdefault.jpg`;
+	elNewElement.querySelector(
+		".card-img",
+	).src = `https://i3.ytimg.com/vi/${movie.ytid}/maxresdefault.jpg`;
 
 	elNewElement.querySelector(".card-title").textContent = movie.Title;
 	elNewElement.querySelector(".card-full-title").textContent = movie.fulltitle;
@@ -55,7 +55,6 @@ let categories = [
 ];
 categories.forEach((item) => {
 	let elOption = document.createElement("option");
-	// let option = document.createElement('option')
 	elOption.textContent = item;
 	elOption.value = item;
 	elSelect.appendChild(elOption);
