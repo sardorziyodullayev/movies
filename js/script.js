@@ -13,10 +13,13 @@ movies.forEach((movie) => {
 	});
 });
 
+movies = movies.slice(0, 100);
+
 let elList = $(".js-movies-list");
 let elMovieTemplate = $("#template-element").content;
 let elSelect = document.querySelector(".site-select");
 let elInput = document.querySelector(".site-input");
+let elSortedSelect = document.querySelector(".sort-select");
 
 let createMovieElement = (movie) => {
 	let elNewElement = elMovieTemplate.cloneNode(true);
@@ -52,7 +55,7 @@ let createMovieElement = (movie) => {
 
 let categories = [
 	...new Set(movies.map((item) => item.Categories.split("|")).flat()),
-];
+].sort();
 categories.forEach((item) => {
 	let elOption = document.createElement("option");
 	elOption.textContent = item;
@@ -86,3 +89,39 @@ let renderMovies = (movies) => {
 };
 
 renderMovies(movies);
+
+let arrange = movies.slice(0, 100);
+
+elSortedSelect.addEventListener("change", function () {
+
+	if (this.value == "sorted-5-10") {
+		arrange = arrange.sort((a, b) => a.imdb_rating - b.imdb_rating);
+		renderMovies(arrange);
+	}
+	
+	 else if (this.value == "sorted-10-5") {
+		arrange = movies.sort((a, b) => b.imdb_rating - a.imdb_rating);
+		renderMovies(arrange);
+	}
+
+	else if (this.value == "sorted-A-Z") {
+		arrange = arrange.sort((a, b) => {
+			let movName1 = a.Title.toLowerCase();
+			let movName2 = b.Title.toLowerCase();
+			if (movName1 < movName2) return -1;
+			return 1;
+		});
+		renderMovies(arrange);
+	} 
+
+	else if (this.value == "sorted-Z-A") {
+		arrange = arrange.sort((a, b) => {
+			let movName1 = a.Title.toLowerCase();
+			let movName2 = b.Title.toLowerCase();
+			if (movName1 > movName2) return -1;
+			return 1;
+		});
+		renderMovies(arrange);
+	} 
+
+});

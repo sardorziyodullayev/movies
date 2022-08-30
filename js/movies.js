@@ -104,7 +104,7 @@ var movies = [
     "ytid": "s54vpKAFmS0"
   },
   {
-    "Title": 89,
+    "Title": "89",
     "fulltitle": "89 (2017)",
     "movie_year": 2017,
     "Categories": "Uncategorized",
