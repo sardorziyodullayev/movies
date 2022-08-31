@@ -106,9 +106,9 @@ elSortedSelect.addEventListener("change", function () {
 
 	else if (this.value == "sorted-A-Z") {
 		arrange = arrange.sort((a, b) => {
-			let movName1 = a.Title.toLowerCase();
-			let movName2 = b.Title.toLowerCase();
-			if (movName1 < movName2) return -1;
+			let movieName1 = a.Title.toLowerCase();
+			let movieName2 = b.Title.toLowerCase();
+			if (movieName1 < movieName2) return -1;
 			return 1;
 		});
 		renderMovies(arrange);
@@ -116,9 +116,9 @@ elSortedSelect.addEventListener("change", function () {
 
 	else if (this.value == "sorted-Z-A") {
 		arrange = arrange.sort((a, b) => {
-			let movName1 = a.Title.toLowerCase();
-			let movName2 = b.Title.toLowerCase();
-			if (movName1 > movName2) return -1;
+			let movieName1 = a.Title.toLowerCase();
+			let movieName2 = b.Title.toLowerCase();
+			if (movieName1 > movieName2) return -1;
 			return 1;
 		});
 		renderMovies(arrange);
